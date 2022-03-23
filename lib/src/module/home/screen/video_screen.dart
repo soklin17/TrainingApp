@@ -23,6 +23,7 @@ class _VideoPageState extends State<VideoPage> {
       appBar: AppBar(
         backgroundColor: Colors.green[700],
         elevation: 0,
+        title: const Text('Video Training'),
         actions: [
           IconButton(
             onPressed: () {
@@ -52,8 +53,8 @@ class _VideoPageState extends State<VideoPage> {
                 // context.router.pushNamed('detail?profileId=1&fullName=Lin');
                 context.pushRoute(
                   VideoDetailPage(
-                    fullName: 'lin',
-                    profileId: 1,
+                    trainer: 'soklin',
+                    type: 'Programming',
                   ),
                 );
               },

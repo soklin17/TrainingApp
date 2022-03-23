@@ -18,17 +18,17 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text("Profile Page"),
-            SizedBox(
+          children: [
+            const Text("Profile Page"),
+            const SizedBox(
               height: 30,
             ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     context.router.pushNamed('setting');
-            //   },
-            //   child: const Text("Setting"),
-            // ),
+            ElevatedButton(
+              onPressed: () {
+                context.router.pushNamed('setting');
+              },
+              child: const Text("Setting"),
+            ),
           ],
         ),
       ),

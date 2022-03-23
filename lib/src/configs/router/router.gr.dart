@@ -11,16 +11,17 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/material.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 
 import '../../module/home/screen/detail_video.dart' as _i4;
 import '../../module/home/screen/home_page.dart' as _i1;
+import '../../module/home/screen/search_screen.dart' as _i6;
 import '../../module/home/screen/setting.dart' as _i5;
 import '../../module/home/screen/video_screen.dart' as _i3;
-import '../../module/profile/screen/profile_screen.dart' as _i6;
+import '../../module/profile/screen/profile_screen.dart' as _i7;
 
 class AppRouter extends _i2.RootStackRouter {
-  AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
+  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
@@ -48,22 +49,31 @@ class AppRouter extends _i2.RootStackRouter {
       final queryParams = routeData.queryParams;
       final args = routeData.argsAs<VideoDetailPageArgs>(
           orElse: () => VideoDetailPageArgs(
-              profileId: queryParams.optInt('profileId'),
-              fullName: queryParams.optString('fullName')));
+              type: queryParams.optString('type'),
+              trainer: queryParams.optString('trainer')));
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i4.VideoDetailPage(
-              key: args.key,
-              profileId: args.profileId,
-              fullName: args.fullName));
+              key: args.key, type: args.type, trainer: args.trainer));
     },
     SettingRouter.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i5.SettingPage());
     },
+    SearchRouter.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<SearchRouterArgs>(
+          orElse: () => SearchRouterArgs(
+              type: queryParams.optString('type'),
+              trainer: queryParams.optString('trainer')));
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i6.SearchScreen(
+              key: args.key, type: args.type, trainer: args.trainer));
+    },
     ProfileRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i6.ProfilePage());
+          routeData: routeData, child: const _i7.ProfilePage());
     }
   };
 
@@ -79,7 +89,9 @@ class AppRouter extends _i2.RootStackRouter {
                 _i2.RouteConfig(VideoDetailPage.name,
                     path: 'video-detail', parent: VideoRouter.name),
                 _i2.RouteConfig(SettingRouter.name,
-                    path: 'setting', parent: VideoRouter.name)
+                    path: 'setting', parent: VideoRouter.name),
+                _i2.RouteConfig(SearchRouter.name,
+                    path: 'search', parent: VideoRouter.name)
               ]),
           _i2.RouteConfig(ProfileRouter.name,
               path: 'profile',
@@ -125,7 +137,7 @@ class ProfileRouter extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.VideoPage]
 class VideoRoute extends _i2.PageRouteInfo<VideoRouteArgs> {
-  VideoRoute({_i7.Key? key, String? id, String? name})
+  VideoRoute({_i8.Key? key, String? id, String? name})
       : super(VideoRoute.name,
             path: '', args: VideoRouteArgs(key: key, id: id, name: name));
 
@@ -135,7 +147,7 @@ class VideoRoute extends _i2.PageRouteInfo<VideoRouteArgs> {
 class VideoRouteArgs {
   const VideoRouteArgs({this.key, this.id, this.name});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   final String? id;
 
@@ -150,28 +162,27 @@ class VideoRouteArgs {
 /// generated route for
 /// [_i4.VideoDetailPage]
 class VideoDetailPage extends _i2.PageRouteInfo<VideoDetailPageArgs> {
-  VideoDetailPage({_i7.Key? key, int? profileId, String? fullName})
+  VideoDetailPage({_i8.Key? key, String? type, String? trainer})
       : super(VideoDetailPage.name,
             path: 'video-detail',
-            args: VideoDetailPageArgs(
-                key: key, profileId: profileId, fullName: fullName),
-            rawQueryParams: {'profileId': profileId, 'fullName': fullName});
+            args: VideoDetailPageArgs(key: key, type: type, trainer: trainer),
+            rawQueryParams: {'type': type, 'trainer': trainer});
 
   static const String name = 'VideoDetailPage';
 }
 
 class VideoDetailPageArgs {
-  const VideoDetailPageArgs({this.key, this.profileId, this.fullName});
+  const VideoDetailPageArgs({this.key, this.type, this.trainer});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
-  final int? profileId;
+  final String? type;
 
-  final String? fullName;
+  final String? trainer;
 
   @override
   String toString() {
-    return 'VideoDetailPageArgs{key: $key, profileId: $profileId, fullName: $fullName}';
+    return 'VideoDetailPageArgs{key: $key, type: $type, trainer: $trainer}';
   }
 }
 
@@ -184,7 +195,34 @@ class SettingRouter extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.ProfilePage]
+/// [_i6.SearchScreen]
+class SearchRouter extends _i2.PageRouteInfo<SearchRouterArgs> {
+  SearchRouter({_i8.Key? key, String? type, String? trainer})
+      : super(SearchRouter.name,
+            path: 'search',
+            args: SearchRouterArgs(key: key, type: type, trainer: trainer),
+            rawQueryParams: {'type': type, 'trainer': trainer});
+
+  static const String name = 'SearchRouter';
+}
+
+class SearchRouterArgs {
+  const SearchRouterArgs({this.key, this.type, this.trainer});
+
+  final _i8.Key? key;
+
+  final String? type;
+
+  final String? trainer;
+
+  @override
+  String toString() {
+    return 'SearchRouterArgs{key: $key, type: $type, trainer: $trainer}';
+  }
+}
+
+/// generated route for
+/// [_i7.ProfilePage]
 class ProfileRoute extends _i2.PageRouteInfo<void> {
   const ProfileRoute() : super(ProfileRoute.name, path: '');
 
