@@ -71,13 +71,10 @@ class _VideoPageState extends State<VideoPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      'ID  : 101010',
+                      'Type Course : Programming',
                     ),
                     Text(
-                      'Type  : Programming',
-                    ),
-                    Text(
-                      'Title  : Flutter',
+                      'Name Trainer  : Soklin',
                     ),
                   ],
                 ),

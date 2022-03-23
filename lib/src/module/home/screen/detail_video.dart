@@ -27,8 +27,8 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("ID: ${widget.type}"),
-            Text("ID: ${widget.trainer}"),
+            Text("Type Course: ${widget.type}"),
+            Text("Name Trainer: ${widget.trainer}"),
           ],
         ),
       ),

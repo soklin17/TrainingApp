@@ -25,8 +25,8 @@ class _SearchScreenState extends State<SearchScreen> {
       body: Center(
         child: Column(
           children: [
-            Text('Type: ${widget.type}'),
-            Text('Type: ${widget.trainer}'),
+            Text('Type Course: ${widget.type}'),
+            Text('Name Trianer: ${widget.trainer}'),
           ],
         ),
       ),
