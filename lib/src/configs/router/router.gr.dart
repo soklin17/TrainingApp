@@ -68,8 +68,7 @@ class AppRouter extends _i2.RootStackRouter {
               trainer: queryParams.optString('trainer')));
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i6.SearchScreen(
-              key: args.key, type: args.type, trainer: args.trainer));
+          child: _i6.SearchScreen(type: args.type, trainer: args.trainer));
     },
     ProfileRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
@@ -81,7 +80,7 @@ class AppRouter extends _i2.RootStackRouter {
   List<_i2.RouteConfig> get routes => [
         _i2.RouteConfig(HomeRoute.name, path: '/', children: [
           _i2.RouteConfig(VideoRouter.name,
-              path: 'videos-listing',
+              path: 'video',
               parent: HomeRoute.name,
               children: [
                 _i2.RouteConfig(VideoRoute.name,
@@ -119,8 +118,7 @@ class HomeRoute extends _i2.PageRouteInfo<void> {
 /// [_i2.EmptyRouterPage]
 class VideoRouter extends _i2.PageRouteInfo<void> {
   const VideoRouter({List<_i2.PageRouteInfo>? children})
-      : super(VideoRouter.name,
-            path: 'videos-listing', initialChildren: children);
+      : super(VideoRouter.name, path: 'video', initialChildren: children);
 
   static const String name = 'VideoRouter';
 }
@@ -197,19 +195,17 @@ class SettingRouter extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i6.SearchScreen]
 class SearchRouter extends _i2.PageRouteInfo<SearchRouterArgs> {
-  SearchRouter({_i8.Key? key, String? type, String? trainer})
+  SearchRouter({String? type, String? trainer})
       : super(SearchRouter.name,
             path: 'search',
-            args: SearchRouterArgs(key: key, type: type, trainer: trainer),
+            args: SearchRouterArgs(type: type, trainer: trainer),
             rawQueryParams: {'type': type, 'trainer': trainer});
 
   static const String name = 'SearchRouter';
 }
 
 class SearchRouterArgs {
-  const SearchRouterArgs({this.key, this.type, this.trainer});
-
-  final _i8.Key? key;
+  const SearchRouterArgs({this.type, this.trainer});
 
   final String? type;
 
@@ -217,7 +213,7 @@ class SearchRouterArgs {
 
   @override
   String toString() {
-    return 'SearchRouterArgs{key: $key, type: $type, trainer: $trainer}';
+    return 'SearchRouterArgs{type: $type, trainer: $trainer}';
   }
 }
 

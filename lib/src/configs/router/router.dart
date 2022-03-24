@@ -16,7 +16,7 @@ import '../../module/home/screen/setting.dart';
       initial: true,
       children: [
         AutoRoute(
-          path: "videos-listing",
+          path: "video",
           name: "VideoRouter",
           page: EmptyRouterPage,
           children: [

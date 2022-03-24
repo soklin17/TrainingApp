@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -5,10 +7,9 @@ class SearchScreen extends StatefulWidget {
   final String? type;
   final String? trainer;
   const SearchScreen({
-    Key? key,
     @queryParam this.type,
     @queryParam this.trainer,
-  }) : super(key: key);
+  });
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -20,7 +21,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green[700],
-        title: const Text('Search'),
+        title: const Text('Video Founded'),
       ),
       body: Center(
         child: Column(
